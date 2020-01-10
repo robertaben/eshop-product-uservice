@@ -4,8 +4,8 @@ let connection = mysql.createConnection({
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: "eshopProducts",
-    host: "localhost",
-    port: "3306",
+    host: process.env.DB_HOST || "127.0.0.1",
+    port: process.env.DB_PORT ||"3306",
     insecureAuth: true
 });
 

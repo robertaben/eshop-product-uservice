@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a213de24-070f-4753-8170-434744c21d87" name="Default Changelist" comment="" />
+    <list default="true" id="a213de24-070f-4753-8170-434744c21d87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/db.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,13 +32,20 @@
     <expand />
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1W6Z7MSN9l4xkssFnBXWdH1g7gf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -76,12 +89,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578471836304</updated>
-      <workItem from="1578471838982" duration="22178000" />
+      <workItem from="1578471838982" duration="22584000" />
+      <workItem from="1578566523931" duration="18288000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="354" y="118" key="#SQL_Dialects" timestamp="1578492432273">
@@ -92,9 +109,21 @@
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="300" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578492214353" />
+    <state x="424" y="231" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578567922249">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="424" y="231" key="#com.intellij.fileTypes.FileTypeChooser/-228.-1057.1920.1057/0.23.1440.797@0.23.1440.797" timestamp="1578567922249" />
+    <state x="379" y="255" key="com.intellij.ide.util.TipDialog" timestamp="1578566534014">
+      <screen x="0" y="23" width="1440" height="803" />
+    </state>
+    <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578566534014" />
     <state x="355" y="31" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578484239432">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="355" y="31" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578484239432" />
+    <state x="376" y="154" key="search.everywhere.popup" timestamp="1578643833751">
+      <screen x="0" y="23" width="1440" height="807" />
+    </state>
+    <state x="376" y="154" key="search.everywhere.popup/-228.-1057.1920.1057/0.23.1440.807@0.23.1440.807" timestamp="1578643833751" />
   </component>
 </project>
