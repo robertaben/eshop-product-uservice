@@ -1,26 +1,22 @@
 const mysql = require("../config/db.js");
 
 // constructor
-const Product = function (product) {
-    this.name = product.name;
-    this.description = product.description;
-    this.price = product.price;
-    this.sku = product.sku;
-    this.image = product.image;
+const Category = function (category) {
+    this.name = category.name;
 };
 
-Product.create = (newProduct, result) => {
-    mysql.query("INSERT INTO products SET ?", newProduct, (err, res) => {
+Category.create = (newCategory, result) => {
+    mysql.query(`INSERT INTO categories SET ?`, newCategory, (err, res) => {
         if (err) {
             result(err, null);
             return;
         }
-        result(null, {id: res.insertId, ...newProduct});
+        result(null, {id: res.insertId, ...newCategory});
     });
 };
 
-Product.findById = (productId, result) => {
-    mysql.query(`SELECT * FROM products WHERE product_id = ${productId}`, (err, res) => {
+Category.findById = (categoryId, result) => {
+    mysql.query(`SELECT * FROM categories WHERE category_id = ${categoryId}`, (err, res) => {
         if (err) {
             result(err, null);
             return;
@@ -34,8 +30,8 @@ Product.findById = (productId, result) => {
     });
 };
 
-Product.getAll = result => {
-    mysql.query("SELECT * FROM products", (err, res) => {
+Category.getAll = result => {
+    mysql.query("SELECT * FROM categories", (err, res) => {
         if (err) {
             result(null, err);
             return;
@@ -44,9 +40,9 @@ Product.getAll = result => {
     });
 };
 
-Product.updateById = (productId, product, result) => {
-    mysql.query("UPDATE products SET name = ?, description = ?, price = ? WHERE product_id = ?",
-        [product.name, product.description, product.price, productId],
+Category.updateById = (categoryId, category, result) => {
+    mysql.query("UPDATE categories SET name = ? WHERE category_id = ?",
+        [category.name, categoryId],
         (err, res) => {
             if (err) {
                 result(null, err);
@@ -56,13 +52,13 @@ Product.updateById = (productId, product, result) => {
                 result({kind: "not_found"}, null);
                 return;
             }
-            result(null, {id: productId, ...product});
+            result(null, {id: categoryId, ...category});
         }
     );
 };
 
-Product.delete = (productId, result) => {
-    mysql.query("DELETE FROM products WHERE product_id = ?", productId, (err, res) => {
+Category.delete = (categoryId, result) => {
+    mysql.query("DELETE FROM categories WHERE category_id = ?", categoryId, (err, res) => {
         if (err) {
             result(null, err);
             return;
@@ -75,8 +71,8 @@ Product.delete = (productId, result) => {
     });
 };
 
-Product.deleteAll = result => {
-    mysql.query("DELETE FROM products", (err, res) => {
+Category.deleteAll = result => {
+    mysql.query("DELETE FROM categories", (err, res) => {
         if (err) {
             result(null, err);
             return;
@@ -85,4 +81,4 @@ Product.deleteAll = result => {
     });
 };
 
-module.exports = Product;
+module.exports = Category;

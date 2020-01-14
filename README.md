@@ -32,7 +32,7 @@ Product part of microservices eshop application
 
 #### Run created image on Docker Container 
 * check mysql host address -> $ docker ps -> $ docker inspect mysql_container_ID
-* check mysql username and password, if needed can be passed throuh "-e DBUSER=user" "-e DBPASS=pass"
+* check mysql username and password, if needed can be passed throuh "-e DB_USER=user" "-e DB_PASS=pass"
 * $ docker run -d --rm -p 11011:3000 -e DB_PORT=6606 -e DB_HOST=172.17.0.1 --link mysql eshop-product-uservice
 
 ## Test with Postman

@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a213de24-070f-4753-8170-434744c21d87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/category.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/category.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/categories.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/product.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +67,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -90,7 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1578471836304</updated>
       <workItem from="1578471838982" duration="22584000" />
-      <workItem from="1578566523931" duration="18288000" />
+      <workItem from="1578566523931" duration="22481000" />
+      <workItem from="1578998303722" duration="6857000" />
     </task>
     <servers />
   </component>
@@ -101,10 +109,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="354" y="118" key="#SQL_Dialects" timestamp="1578492432273">
+    <state x="354" y="118" key="#SQL_Dialects" timestamp="1579000486713">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
-    <state x="354" y="118" key="#SQL_Dialects/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578492432273" />
+    <state x="354" y="118" key="#SQL_Dialects/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1579000486713" />
+    <state x="320" y="90" key="#SQL_Resolution_Scopes" timestamp="1579001338720">
+      <screen x="0" y="23" width="1440" height="803" />
+    </state>
+    <state x="320" y="90" key="#SQL_Resolution_Scopes/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1579001338720" />
     <state x="300" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578492214353">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
@@ -113,10 +125,23 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="424" y="231" key="#com.intellij.fileTypes.FileTypeChooser/-228.-1057.1920.1057/0.23.1440.797@0.23.1440.797" timestamp="1578567922249" />
-    <state x="379" y="255" key="com.intellij.ide.util.TipDialog" timestamp="1578566534014">
+    <state x="408" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578998208314">
+      <screen x="0" y="23" width="1440" height="805" />
+    </state>
+    <state x="408" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-228.-1057.1920.1057/0.23.1440.805@0.23.1440.805" timestamp="1578998208314" />
+    <state width="200" height="441" key="SqlResolveConfigurable" timestamp="1579001334977">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
+    <state width="200" height="441" key="SqlResolveConfigurable/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1579001334977" />
+    <state x="456" y="115" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1579001301892">
+      <screen x="0" y="23" width="1440" height="803" />
+    </state>
+    <state x="456" y="115" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1579001301892" />
+    <state x="379" y="255" key="com.intellij.ide.util.TipDialog" timestamp="1578998303997">
+      <screen x="0" y="23" width="1440" height="805" />
+    </state>
     <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578566534014" />
+    <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.805@0.23.1440.805" timestamp="1578998303997" />
     <state x="355" y="31" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578484239432">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
