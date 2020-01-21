@@ -1,4 +1,4 @@
-const mysql = require("../config/db.js");
+const mysql = require("../config/db.config.js");
 
 // constructor
 const Category = function (category) {

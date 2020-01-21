@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a213de24-070f-4753-8170-434744c21d87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/category.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/category.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/categories.routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/db.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/product.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/product.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/category.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/category.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/product.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/categories.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/categories.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/validator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,9 @@
       <updated>1578471836304</updated>
       <workItem from="1578471838982" duration="22584000" />
       <workItem from="1578566523931" duration="22481000" />
-      <workItem from="1578998303722" duration="6857000" />
+      <workItem from="1578998303722" duration="9838000" />
+      <workItem from="1579466572080" duration="13397000" />
+      <workItem from="1579639716974" duration="2043000" />
     </task>
     <servers />
   </component>
@@ -137,11 +140,12 @@
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="456" y="115" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1579001301892" />
-    <state x="379" y="255" key="com.intellij.ide.util.TipDialog" timestamp="1578998303997">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="379" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1579639717137">
+      <screen x="0" y="23" width="1440" height="796" />
     </state>
+    <state x="379" y="252" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.796@0.23.1440.796" timestamp="1579639717137" />
     <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.803@0.23.1440.803" timestamp="1578566534014" />
-    <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.805@0.23.1440.805" timestamp="1578998303997" />
+    <state x="379" y="255" key="com.intellij.ide.util.TipDialog/-228.-1057.1920.1057/0.23.1440.805@0.23.1440.805" timestamp="1579466578125" />
     <state x="355" y="31" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578484239432">
       <screen x="0" y="23" width="1440" height="803" />
     </state>

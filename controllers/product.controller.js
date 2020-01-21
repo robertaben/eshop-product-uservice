@@ -9,14 +9,26 @@ exports.create = (req, res) => {
     const product = new Product({
         name: req.body.name,
         description: req.body.description,
-        price: req.body.price
+        price: req.body.price,
+        sku: req.body.sku,
+        image: req.body.image
     });
-    Product.create(product, (err, data) => {
-        if (err)
-            res.status(500).send({
-                message:
-                    err.message || "Error occurred while creating the new Product."
-            });
+
+    const categories = req.body.categories;
+
+    Product.create(product, categories, (err, data) => {
+        if (err) {
+            if (err.kind === "category_not_found") {
+                res.status(404).send({
+                    message: `Categories not found`
+                });
+            } else {
+                res.status(500).send({
+                    message:
+                        err.message || "Error occurred while creating the new Product."
+                });
+            }
+        }
         else res.send(data);
     });
 };
@@ -56,7 +68,14 @@ exports.update = (req, res) => {
     }
     Product.updateById(
         req.params.productId,
-        new Product(req.body),
+        new Product({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            sku: req.body.sku,
+            image: req.body.image
+        }),
+        req.body.categories,
         (err, data) => {
             if (err) {
                 if (err.kind === "not_found") {

@@ -10,6 +10,13 @@ const productValidationRules = () => {
     ]
 };
 
+const categoryValidationRules = () => {
+    return [
+        body("name").isLength({min: 3, max: 255})
+            .withMessage("Invalid value. Category name should be minimum 3 symbols"),
+    ]
+};
+
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
@@ -25,5 +32,6 @@ const validate = (req, res, next) => {
 
 module.exports = {
     productValidationRules,
+    categoryValidationRules,
     validate,
 };
