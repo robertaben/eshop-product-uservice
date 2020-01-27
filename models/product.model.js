@@ -10,31 +10,60 @@ const Product = function (product) {
 };
 
 Product.create = (newProduct, categories, result) => {
-    categories.forEach(category => {
-        if (mysql.query(`SELECT EXISTS (SELECT category_id FROM categories WHERE category_id = ${category})`)) {
-        }
-    });
-    mysql.query("INSERT INTO products SET ?", newProduct, (err, res) => {
-        if (err) {
-            result(err, null);
-            return;
-        }
-        const prod_Id = res.insertId;
-        categories.forEach(category => {
-            mysql.query("INSERT INTO products_categories SET product_id = ?, category_id = ? ",
-                [prod_Id, category],
-                (err, res) => {
-                    if (err) {
-                        result(err, null);
+    // checking if categories passed as array
+    if (Array.isArray(categories)) {
+        // selecting categories from categories table by passed array values
+        mysql.query("SELECT COUNT(*) AS counted FROM categories WHERE category_id IN (?)",
+            [categories],
+            (err, res) => {
+                if (err) {
+                    result(err, null);
+                } else {
+                    const cat_count = res[0].counted;
+                    // checking if all passed categories are from categories table
+                    if (categories.length === cat_count) {
+                        // inserting new product
+                        mysql.query("INSERT INTO products SET ?", newProduct, (err, res) => {
+                            if (err) {
+                                result(err, null);
+                                return;
+                            }
+                            const prod_Id = res.insertId;
+                            categories.forEach(category => {
+                                // inserting products and categories into products_categories
+                                mysql.query("INSERT INTO products_categories SET product_id = ?, category_id = ? ",
+                                    [prod_Id, category],
+                                    (err, res) => {
+                                        if (err) {
+                                            result(err, null);
+                                        }
+                                    });
+                            });
+                            result(null, {id: res.insertId, ...newProduct, categories});
+                        });
+                    } else {
+                        // if any category not found
+                        result({kind: "category_not_found"}, null);
                     }
-                });
+                }
+            });
+        // checking if categories are not passed
+    } else if (categories == null) {
+        mysql.query("INSERT INTO products SET ?", newProduct, (err, res) => {
+            if (err) {
+                result(err, null);
+                return;
+            }
+            result(null, {id: res.insertId, ...newProduct});
         });
-        result(null, {id: res.insertId, ...newProduct});
-    });
+    } else {
+        // if categories not in array
+        result({kind: "category_not_array"}, null);
+    }
 };
 
 Product.findById = (productId, result) => {
-    mysql.query(`SELECT p.name AS 'name', p.description AS 'description', p.price AS 'price', p.sku AS 'sku', p.image AS 'image',
+    mysql.query(`SELECT p.product_id AS 'product_id', p.name AS 'name', p.description AS 'description', p.price AS 'price', p.sku AS 'sku', p.image AS 'image',
         GROUP_CONCAT(pc.category_id SEPARATOR ',') AS categories 
         FROM products as p 
         LEFT JOIN products_categories AS pc 
@@ -55,7 +84,7 @@ Product.findById = (productId, result) => {
 };
 
 Product.getAll = result => {
-    mysql.query(`SELECT p.name AS 'name', p.description AS 'description', p.price AS 'price', p.sku AS 'sku', p.image AS 'image',
+    mysql.query(`SELECT p.product_id AS 'product_id', p.name AS 'name', p.description AS 'description', p.price AS 'price', p.sku AS 'sku', p.image AS 'image',
         GROUP_CONCAT(pc.category_id SEPARATOR ',') AS categories 
         FROM products as p 
         LEFT JOIN products_categories AS pc 
@@ -70,38 +99,84 @@ Product.getAll = result => {
 };
 
 Product.updateById = (productId, product, categories, result) => {
-    mysql.query(`UPDATE products SET name = ?, description = ?, price = ?, sku = ?, image = ? WHERE product_id = ?`,
-        [product.name, product.description, product.price, product.sku, product.image, productId],
-        (err, res) => {
-            if (err) {
-                result(null, err);
-                return;
-            }
-            if (res.affectedRows === 0) {
-                result({kind: "not_found"}, null);
-                return;
-            }
-            mysql.query(`DELETE FROM products_categories WHERE product_id = ?`, [productId], (err, res) => {
+    // checking if categories passed as array
+    if (Array.isArray(categories)) {
+        // selecting categories from categories table by passed array values
+        mysql.query("SELECT COUNT(*) AS counted FROM categories WHERE category_id IN (?)",
+            [categories],
+            (err, res) => {
                 if (err) {
                     result(err, null);
+                } else {
+                    const cat_count = res[0].counted;
+                    // checking if all passed categories are from categories table
+                    if (categories.length === cat_count) {
+                        mysql.query(`UPDATE products SET name = ?, description = ?, price = ?, sku = ?, image = ? 
+                            WHERE product_id = ?`,
+                            [product.name, product.description, product.price, product.sku, product.image, productId],
+                            (err, res) => {
+                                if (err) {
+                                    result(null, err);
+                                    return;
+                                }
+                                if (res.affectedRows === 0) {
+                                    result({kind: "not_found"}, null);
+                                    return;
+                                }
+                                mysql.query(`DELETE FROM products_categories WHERE product_id = ?`,
+                                    [productId],
+                                    (err, res) => {
+                                        if (err) {
+                                            result(err, null);
+                                        }
+                                    });
+                                categories.forEach(category => {
+                                    mysql.query("INSERT INTO products_categories SET product_id = ?, category_id = ? ",
+                                        [productId, category],
+                                        (err, res) => {
+                                            if (err) {
+                                                result(err, null);
+                                            }
+                                        });
+                                });
+                                result(null, {id: productId, ...product, categories});
+                            }
+                        );
+                    } else {
+                        // if any category not found
+                        result({kind: "category_not_found"}, null);
+                    }
                 }
             });
-            categories.forEach(category => {
-                mysql.query("INSERT INTO products_categories SET product_id = ?, category_id = ? ",
-                    [productId, category],
+    } else if (categories == null) {
+        mysql.query(`UPDATE products SET name = ?, description = ?, price = ?, sku = ?, image = ? 
+                            WHERE product_id = ?`,
+            [product.name, product.description, product.price, product.sku, product.image, productId],
+            (err, res) => {
+                if (err) {
+                    result(null, err);
+                    return;
+                }
+                if (res.affectedRows === 0) {
+                    result({kind: "not_found"}, null);
+                    return;
+                }
+                mysql.query(`DELETE FROM products_categories WHERE product_id = ?`,
+                    [productId],
                     (err, res) => {
                         if (err) {
                             result(err, null);
                         }
                     });
-            });
-            result(null, {id: productId, ...product, categories});
-        }
-    );
-
+                result(null, {id: productId, ...product});
+            })
+    } else {
+        // if categories not in array
+        result({kind: "category_not_array"}, null);
+    }
 };
 
-// products_categories cascading
+// products_categories are cascading
 Product.delete = (productId, result) => {
     mysql.query("DELETE FROM products WHERE product_id = ?", productId, (err, res) => {
         if (err) {
@@ -116,7 +191,7 @@ Product.delete = (productId, result) => {
     });
 };
 
-// products_categories cascading
+// products_categories are cascading
 Product.deleteAll = result => {
     mysql.query("DELETE FROM products", (err, res) => {
         if (err) {

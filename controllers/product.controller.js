@@ -20,7 +20,11 @@ exports.create = (req, res) => {
         if (err) {
             if (err.kind === "category_not_found") {
                 res.status(404).send({
-                    message: `Categories not found`
+                    message: `Categories not found, please choose existing categories`
+                });
+            } else if (err.kind === "category_not_array") {
+                res.status(404).send({
+                    message: `Categories should be passed in an array`
                 });
             } else {
                 res.status(500).send({
@@ -78,13 +82,18 @@ exports.update = (req, res) => {
         req.body.categories,
         (err, data) => {
             if (err) {
-                if (err.kind === "not_found") {
+                if (err.kind === "category_not_found") {
                     res.status(404).send({
-                        message: `Not found Product with id ${req.params.productId}.`
+                        message: `Categories not found, please choose existing categories`
+                    });
+                } else if (err.kind === "category_not_array") {
+                    res.status(404).send({
+                        message: `Categories should be passed in an array`
                     });
                 } else {
                     res.status(500).send({
-                        message: "Error updating Product with id " + req.params.productId
+                        message:
+                            err.message || "Error occurred while creating the new Product."
                     });
                 }
             } else res.send(data);

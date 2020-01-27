@@ -17,8 +17,9 @@ Product part of microservices eshop application
 * to start $ node app.js or if using [nodemon](https://nodemon.io/) $ nodemon
 
 ## Test with Postman
+* POST http://localhost:3000/categories/ Body: {"name": "Mobile"}
 * GET http://localhost:3000/products/
-* POST http://localhost:3000/products Body: {"name": "no name", "description": "no description", "price": 0.01}
+* POST http://localhost:3000/products Body: {"name": "no name", "description": "no description", "price": 0.01, "categories": [1]}
 * PUT http://localhost:3000/products Body: {"name": "name", "description": "description", "price": 1.00}
 * DELETE http://localhost:3000/products/1
 * DELETE http://localhost:3000/products 
@@ -36,8 +37,9 @@ Product part of microservices eshop application
 * $ docker run -d --rm -p 11011:3000 -e DB_PORT=6606 -e DB_HOST=172.17.0.1 --link mysql eshop-product-uservice
 
 ## Test with Postman
+* POST http://localhost:11011/categories/ Body: {"name": "Mobile"}
 * GET http://localhost:11011/products/
-* POST http://localhost:11011/products Body: {"name": "no name", "description": "no description", "price": 0.01}
+* POST http://localhost:11011/products Body: {"name": "no name", "description": "no description", "price": 0.01, "categories": [1]}
 * PUT http://localhost:11011/products Body: {"name": "name", "description": "description", "price": 1.00}
 * DELETE http://localhost:11011/products/1
 * DELETE http://localhost:11011/products 
