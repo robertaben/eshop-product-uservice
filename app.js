@@ -15,6 +15,8 @@ app.get("/", (req, res) => {
 
 require("./routes/products.routes.js")(app);
 require("./routes/categories.routes.js")(app);
+require("./routes/warehouses.routes.js")(app);
+require("./routes/inventory.routes.js")(app);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`The server is running on port: ${process.env.PORT || '3000'}`);

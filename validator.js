@@ -17,6 +17,22 @@ const categoryValidationRules = () => {
     ]
 };
 
+const warehouseValidationRules = () => {
+    return [
+        body("name").isLength({min: 3, max: 255})
+            .withMessage("Invalid value. Warehouse name should be minimum 3 symbols"),
+        body("address").isLength({min: 10, max: 255})
+            .withMessage("Invalid value. Warehouse address should be minimum 10 symbols"),
+    ]
+};
+
+const inventoryValidationRules = () => {
+    return [
+        body("quantity").optional(true).isInt()
+            .withMessage("Invalid value. Quantity should be a number"),
+    ]
+};
+
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
@@ -33,5 +49,7 @@ const validate = (req, res, next) => {
 module.exports = {
     productValidationRules,
     categoryValidationRules,
+    warehouseValidationRules,
+    inventoryValidationRules,
     validate,
 };
